@@ -5,7 +5,7 @@ const videoPrimary = document.getElementById("video-primary");
 const videoScroll = document.getElementById("video-scroll");
 
 const SCROLL_THRESHOLD = 48;
-const SCROLL_HOLD_MS = 2000;
+const SCROLL_HOLD_MS = 1000;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let wantsScrollVideo = false;
