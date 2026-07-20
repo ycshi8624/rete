@@ -260,6 +260,7 @@ a {
   background: var(--portrait);
   flex-shrink: 0;
   overflow: hidden;
+  margin-inline-end: 20px;
 }
 
 .team-portrait img {
@@ -343,6 +344,7 @@ a {
     order: -1;
     width: 5rem;
     height: 5rem;
+    margin-inline-end: 0;
   }
 
   .collaborators-grid {
