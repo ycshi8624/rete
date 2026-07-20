@@ -1,0 +1,377 @@
+:root {
+  --cream: #f7f0e8;
+  --ink: #1a1a1a;
+  --muted: #4a4a4a;
+  --portrait: #d9d9d9;
+  --page: #ffffff;
+  --font-display: "Aboreto", serif;
+  --font-serif: "EB Garamond", "Garamond", serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-serif);
+  color: var(--ink);
+  background: var(--page);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ——— Logo ——— */
+
+.logo {
+  display: block;
+  margin: 0;
+  line-height: 0;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+.logo--hero {
+  position: relative;
+  z-index: 2;
+  width: clamp(12rem, 38vw, 22rem);
+  opacity: 0;
+  transform: translateY(12px) scale(0.985);
+  filter: blur(8px);
+  transition:
+    opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.logo--hero img {
+  width: 100%;
+}
+
+.logo--hero.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.logo--header {
+  width: 6.5rem;
+}
+
+.logo--header img {
+  width: 100%;
+  filter: brightness(0);
+}
+
+/* ——— Home ——— */
+
+.page-home {
+  background: #1a0a0c;
+}
+
+.home-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.home-stage .about-nav {
+  pointer-events: none;
+}
+
+.home-stage .about-nav.is-visible {
+  pointer-events: auto;
+}
+
+.home-base {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 25%, #ff8a3d 0%, transparent 55%),
+    radial-gradient(ellipse 65% 55% at 55% 50%, #e84a3c 0%, transparent 58%),
+    radial-gradient(ellipse 75% 65% at 80% 75%, #c41e72 0%, transparent 55%),
+    linear-gradient(135deg, #ff6b35 0%, #e23a4a 42%, #b8186a 100%);
+  filter: blur(28px);
+  transform: scale(1.08);
+}
+
+.home-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-media.is-active {
+  opacity: 1;
+}
+
+.home-media--scroll {
+  z-index: 1;
+}
+
+.home-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.35);
+  opacity: 1;
+  transition: opacity 1.1s ease;
+}
+
+.home-video.is-dissolving {
+  opacity: 0;
+}
+
+.home-scroll {
+  height: 180vh;
+  pointer-events: none;
+}
+
+.about-nav {
+  position: fixed;
+  top: 1.75rem;
+  right: 2rem;
+  z-index: 20;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(-8px);
+  filter: blur(4px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-nav.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ——— About page ——— */
+
+.page-about {
+  background: var(--page);
+}
+
+.about {
+  position: relative;
+  background: var(--page);
+  padding: 2rem clamp(1.5rem, 5vw, 4.5rem) 6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 4.5rem;
+}
+
+.about-email {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.about-intro {
+  max-width: 38rem;
+  margin: 0 0 5.5rem;
+  font-size: clamp(1.15rem, 2.1vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.section-title {
+  margin: 0 0 2.75rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.team {
+  margin-bottom: 5.5rem;
+}
+
+.team-member {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+  margin-bottom: 3.25rem;
+}
+
+.team-member:last-child {
+  margin-bottom: 0;
+}
+
+.team-name {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.team-member-copy p {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.team-portrait {
+  width: clamp(5.5rem, 12vw, 7.5rem);
+  height: clamp(5.5rem, 12vw, 7.5rem);
+  border-radius: 50%;
+  background: var(--portrait);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.team-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.collaborators-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 4rem;
+  max-width: 40rem;
+}
+
+.collaborators-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.collaborators-grid > ul > li {
+  margin-bottom: 0.55rem;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.collaborators-sub {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.collaborators-sub li {
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ——— Scroll emerge ——— */
+
+.emerge {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(6px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.emerge.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (max-width: 700px) {
+  .about-nav {
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 0.62rem;
+  }
+
+  .about-header {
+    margin-bottom: 3rem;
+  }
+
+  .about-intro {
+    margin-bottom: 3.5rem;
+  }
+
+  .team-member {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .team-portrait {
+    order: -1;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .collaborators-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-media,
+  .home-video {
+    transition: none;
+  }
+
+  .home-video {
+    transform: scale(1.35);
+  }
+
+  .logo--hero,
+  .about-nav,
+  .emerge {
+    transition: none;
+    filter: none;
+    transform: none;
+  }
+
+  .logo--hero,
+  .about-nav.is-visible,
+  .emerge.is-visible {
+    opacity: 1;
+  }
+}
